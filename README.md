@@ -75,7 +75,7 @@ mysql> INSERT INTO bookmaker (id,bookmaker_name) VALUES(2,'fonbet');
 mysql> SELECT * FROM bookmaker;
 ```
 
-![Скорость iperf3 в режиме tap](https://github.com/Dogmatic41/otus/blob/main/43.mysql/images/master.png)
+![Скорость iperf3 в режиме tap](https://github.com/otuskurs/dz28-mysql/blob/main/%D1%81%D0%BA%D1%80%D0%B8%D0%BD%D1%8B/master-2.png)
 
 И проверяем slave
 
