@@ -1,0 +1,48 @@
+---
+- hosts: all
+  gather_facts: true
+  become: true
+  tasks:
+    - name: Install Percona repository
+      shell: yum install https://repo.percona.com/yum/percona-release-latest.noarch.rpm -y
+    - name: Update repository cache
+      yum:
+        name: '*'
+        state: latest
+        update_cache: yes
+    - name:
+      shell: percona-release setup ps57
+    - name:
+      shell: dnf module disable mysql  
+    - name: Install Percona server
+      yum:
+        name: Percona-Server-server-57
+        state: present
+- hosts: 192.168.91.96
+  gather_facts: true
+  become: true
+  tasks:
+    - name: Copy conf 
+      copy:
+        src: "{{ item }}"
+        dest: /root/etc/my.cnf.d/
+      with_fileglob:
+        - /root/dz29-mysql/conf.d/*
+    - name: Запускаем службу
+      shell: systemctl start mysql
+    - name: Copy bet.dmp 
+      copy:
+        src: /root/dz29-mysql/bet.dmp
+        dest: /root/
+- hosts: 192.168.91.95
+  gather_facts: true
+  become: true
+  tasks:
+    - name: Copy conf 
+      copy:
+        src: "{{ item }}"
+        dest: /root/etc/my.cnf.d/
+      with_fileglob:
+        - /root/dz29-mysql/conf.d-slave/*
+    - name: Запускаем службу
+      shell: systemctl start mysql
