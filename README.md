@@ -62,7 +62,7 @@ replicate-ignore-table=bet.v_same_event
 ```
 Настраиваем slave
 ```
-mysql> CHANGE MASTER TO MASTER_HOST = "192.168.91.95", MASTER_PORT = 3306, MASTER_USER = "repl", MASTER_PASSWORD = "!OtusLinux2018", MASTER_AUTO_POSITION = 1;
+mysql> CHANGE MASTER TO MASTER_HOST = "192.168.91.96", MASTER_PORT = 3306, MASTER_USER = "repl", MASTER_PASSWORD = "!OtusLinux2018", MASTER_AUTO_POSITION = 1;
 mysql> START SLAVE;
 mysql> SHOW SLAVE STATUS\G
 ```
@@ -82,4 +82,4 @@ mysql> SELECT * FROM bookmaker;
 ```
 SELECT * FROM bookmaker;
 ```
-![Скорость iperf3 в режиме tun](https://github.com/Dogmatic41/otus/blob/main/43.mysql/images/slave.png)
+![Скорость iperf3 в режиме tun](https://github.com/otuskurs/dz28-mysql/blob/main/%D1%81%D0%BA%D1%80%D0%B8%D0%BD%D1%8B/slave-3.png)
